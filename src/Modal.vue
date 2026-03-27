@@ -16,7 +16,8 @@
 export default {
   data() {
     return {
-      month: 1
+      month: 1,
+      prevMonth: 1
     }
   },
   name: 'Modal',
@@ -33,12 +34,13 @@ export default {
     }
   },
 
-  watch: {
-    month(a) {
-      if (typeof a !== 'number') {
-        alert('문자를 입력하지 마세요.');
-        this.month = 1;
+  updated() {
+    // month 값이 실제로 바뀐 경우만 실행
+    if (this.month !== this.prevMonth) {
+      if (this.month === 2) {
+        alert('최소 3개월 이상부터 대여 가능합니다.');
       }
+      this.prevMonth = this.month;
     }
   }
 }

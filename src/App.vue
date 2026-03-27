@@ -11,7 +11,7 @@
     <button @click="nameDesc">가나다 역순 정렬</button>
     <button @click="reset">되돌리기</button>
     <div class="content">
-      <Discount/>
+      <Discount v-if="showDiscount"/>
       <Card @신고하기="increase($event)" @openModal="모달창 = true; 상품번호 = $event" :room="원룸" :신고="신고수[index]"  v-for="(원룸, index) in 원룸들" :key="index"/>
   </div>
   </div>
@@ -23,6 +23,7 @@ import data from './assets/oneroom';
 import Modal from './Modal.vue';
 import Card from './Card.vue';
 import Discount from './Discount.vue';
+
 
 export default {
   name : 'App',
@@ -38,6 +39,7 @@ export default {
       price2 : 200,
       price3 : 300,
       products : ['해운대원룸', '에코델타시티원룸', '광안리원룸'],
+      showDiscount : true
     }
   },
   methods : {
